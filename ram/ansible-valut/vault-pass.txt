@@ -1,2 +1,0 @@
-websecrets.yml:RedHat
-dbsecrets.yml:RedHat

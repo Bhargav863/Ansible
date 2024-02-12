@@ -1,8 +1,0 @@
----
-- name: The following task uses the fail module to fail if the keys variable is undefined
-  hosts: localhost
-  tasks:
-    - name:  Fail if you got no keys
-      fail:
-        msg: This play requires some keys
-      when: keys is not defined

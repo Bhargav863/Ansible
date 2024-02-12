@@ -1,9 +1,0 @@
----
-- name: Install nfs-utils on all servers which have OS amazon linux 2
-  hosts: all
-  tasks:
-    - name: Install nfs-utils pacjage
-      package: 
-        name: nfs-utils
-        state: present
-      when: ansible_distribution == "Amazon"

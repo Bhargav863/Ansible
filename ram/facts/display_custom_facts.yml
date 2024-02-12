@@ -1,8 +1,0 @@
----
-- name: Displaying custom facts
-  hosts: all
-  tasks:
-    - name: Display the custom facts
-      debug:
-        msg: "{{ ansible_local.cool.fun.salaar }}"
-   

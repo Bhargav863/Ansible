@@ -1,8 +1,0 @@
----
-- name: Applying nginx_role role
-  hosts: localhost
-  tasks:
-    - name: run the below role
-      include_role:
-            name: nginx_role
-            
