@@ -1,0 +1,9 @@
+---
+- name: start webservices
+  hosts: all
+  tasks:
+    - name: starting httpd service
+      service:
+        name: httpd
+        enabled: true
+        state: started

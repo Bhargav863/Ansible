@@ -1,0 +1,20 @@
+---
+- name: Handlers in Ansible are tasks that get triggered when notified by other tasks in a playbook. They are commonly used to restart services or perform other actions in response to changes.
+  hosts: localhost
+  tasks:
+    - name: Create an Engineering group
+      group:
+        name: Engineers
+      notify: add ram
+
+    - name: This is just an another task in playbook
+      debug:
+        msg: The handlers will run only if ther is an any chnage in the task that contain notify module or else handlers won't run. Run this playbook twice and observer the changes.
+
+  handlers:
+    - name: add ram
+      user:
+        name: ram
+        group: Engineers
+        append: yes
+

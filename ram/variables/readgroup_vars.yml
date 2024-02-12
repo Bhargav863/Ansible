@@ -1,0 +1,16 @@
+---
+- name: This example demonstrates the usage of group variables.
+  hosts: all
+  tasks:
+   - name: install the mentioned package
+     package:
+         name: "{{ pkg }}"
+         state: present
+
+   - name: provide the installed version of package
+     command: "{{ pkg }} --version"
+     register: version
+
+   - name: Show me the version
+     debug:
+       var: version

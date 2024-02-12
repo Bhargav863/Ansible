@@ -1,0 +1,15 @@
+---
+- name: using httpd role
+  hosts: dev
+  vars:
+    - webserver: nginx
+    - sysadmin: nearshore
+  tasks:
+  pre_tasks:
+    - name: remove httpd and install
+      package:
+        name: httpd
+        state: absent
+
+  roles:
+    - role: httpd-role

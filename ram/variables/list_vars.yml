@@ -1,0 +1,31 @@
+---
+- name: This is the example to understand defining variables in a list format
+  hosts: all
+  gather_facts: false
+  vars:
+    port_nums: [21,22,23,24,25,80,443,8443]
+
+    users:
+      - ram
+      - sumati
+      - vyshu
+      - ansible
+      - linux
+      - jenkins
+
+  tasks:
+   - name: Print all the port numbers
+     debug:
+       msg: All the ports are {{ port_nums }}
+
+   - name: Print all the users
+     debug: 
+       msg: All the users are {{ users }}
+
+   - name: Print the particular port number using index
+     debug:
+       msg: First port is {{ port_nums[2] }}
+
+   - name: Print the user ansible
+     debug:
+       msg: Current user is {{ users[3] }}

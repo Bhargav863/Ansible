@@ -1,0 +1,18 @@
+---
+- name: This examples shows the usage of dictionaries in loops
+  hosts: all
+  vars:
+   employee:
+     ram:
+      name: "Bhargavaram"
+      title: "DevOps Engineer"
+      company: "Accenture"
+     sumati:
+      name: "sumati"
+      title: "CloudOpsadmin"
+      company: "BestBuy"
+  tasks: 
+    - name: Print employee information
+      debug:
+        msg: my name is {{ item.value.name }}. I am working as {{ item.value.title }} in {{ item.value.company }}.
+      loop: "{{ employee | dict2items }}"

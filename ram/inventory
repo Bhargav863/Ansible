@@ -1,0 +1,12 @@
+ansiblenode1
+ansiblenode2
+
+[dev]
+ansiblenode1
+
+[qa]
+ansiblenode2
+
+[project:children]
+dev
+qa

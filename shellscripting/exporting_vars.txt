@@ -1,0 +1,38 @@
+To export variables permanently you can add export command in anyone of the following startup files.
+
+	1) /etc/profile
+	2) ~./bashrc
+	3) ~./bash_profile
+
+.bashrc and .bash_profile are lives in the users home directory, so they are accessible only for that user. /etc/profile is for global access. for all the variables.
+
+[ansible@ansible ~]$ skill=DevOps
+[ansible@ansible ~]$ echo $skill
+DevOps
+[ansible@ansible ~]$ exit
+logout
+Connection to 52.201.245.181 closed.
+$ ssh ansible@52.201.245.181
+ansible@52.201.245.181's password:
+Last login: Thu Feb  8 14:29:42 2024 from 183.83.167.91
+ 
+[ansible@ansible ~]$ echo $skill
+
+[ansible@ansible ~]$
+
+Note:- Variables are temporary storages, variables only live for the current shell.
+
+Export is used to make variable globally available but still it's temporary.
+
+To make it permanent add the variable in ~./bash_profile. It is permanently available for user.
+
+If you add the variable in /etc/profile.  It is globally available for all users.
+
+[ansible@ansible ~]$ vi .bashrc
+    export skill=DevOps
+[ansible@ansible ~]$ source .bashrc
+[ansible@ansible ~]$ echo " I am learning $skill"
+ I am learning DevOps
+
+
+

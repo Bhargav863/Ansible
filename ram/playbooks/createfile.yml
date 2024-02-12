@@ -1,0 +1,16 @@
+---
+- name: creating a new file
+  hosts: all
+  tasks:
+   - name: create a file
+     file:
+      path: /tmp/file2.txt
+      mode: 0755
+      owner: root
+      state: touch
+      content: |
+           this is line1
+           this is line2
+           this is line3
+...
+      

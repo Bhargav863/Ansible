@@ -1,0 +1,12 @@
+---
+# tasks file for myrole
+- name: first task
+  debug:
+    msg: I am the first task in this role
+  notify: handler
+
+
+- name: I am the second task
+  debug:
+    msg: I am the second task
+

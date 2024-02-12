@@ -1,0 +1,16 @@
+---
+- name: Accessing facts using jinja2, you can access facts in jinja2 templates the same way you access facts from your playbook
+  hosts: all
+  tasks: 
+    - name: Store server information using jinja2
+      template:
+        src: info.j2
+        dest: /tmp/serverinfo.txt
+
+    - name: server information
+      command: cat /tmp/serverinfo.txt
+      register: serverinfo
+
+    - name: display server info
+      debug:
+        msg: "{{ serverinfo.stdout }}"

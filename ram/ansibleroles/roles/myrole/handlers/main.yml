@@ -1,0 +1,5 @@
+---
+# handlers file for myrole
+- name: handler
+  debug:
+    msg: I am the handler of the first task

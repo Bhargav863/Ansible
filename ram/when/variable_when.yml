@@ -1,0 +1,15 @@
+---
+- name: using variables with when condition
+  hosts: localhost
+  vars:
+    weekend: true
+    on_call: "no"
+  tasks: 
+    - name: Check if the employee is available or not
+      debug:
+        msg: Employee is available
+      when: weekend and not on_call | bool
+...
+# I used the bool filter here to convert the on_call value to its boolean
+#equivalent (no →false).
+

@@ -1,0 +1,12 @@
+---
+- name: Configure firewall rules
+  hosts: all
+  vars:
+    ports: [80,443,8443]
+  tasks:
+   - name: Open the mentioned ports
+     firewalld:
+       port: "{{ item }}/tcp"
+       state: enabled
+       permanent: yes
+     loop: "{{ ports }}"

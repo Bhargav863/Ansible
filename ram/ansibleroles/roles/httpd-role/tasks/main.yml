@@ -1,0 +1,12 @@
+---
+# tasks file for httpd-role
+- name: Install httpd
+  package:
+     name: httpd
+     state: present
+  notify: restart apache
+
+- name: Creating a configuration file
+  template:
+     src: index.j2
+     dest: /var/www/html/index.html

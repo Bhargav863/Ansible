@@ -1,0 +1,19 @@
+---
+- name: This example demonstrates chnaged_when in detail
+  hosts: all
+  tasks:
+    - name: Run the date command
+      command: date
+      notify: handler1
+      changed_when: false
+
+    - name: Check this task output to know why it's not calling handler
+      debug:
+        msg: >
+             The changed_when false line explicitly tells Ansible not to consider this task as having caused a change, even though it is running a command. This is done to prevent unnecessary triggering of
+             handlers.
+
+  handlers:
+     - name: handler1
+       debug:
+         msg: I am a handler

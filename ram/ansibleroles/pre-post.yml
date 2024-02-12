@@ -1,0 +1,27 @@
+---
+- name: Understanding order of task execution
+  hosts: localhost
+  roles:
+    - role: myrole
+  tasks:
+    - name: A regular task
+      debug:
+        msg: I am a regular task
+  pre_tasks:
+    - name: I am precheck task
+      debug:
+        msg: I am a precheck task
+      notify: handler
+  post_tasks:
+    - name: I am a postcheck task
+      debug:
+        msg: I am a postcheck task
+      notify: handler for postcheck
+  handlers:
+    - name: handler
+      debug:
+        msg: i am handler for precheck
+
+    - name: handler for postcheck
+      debug:
+        msg: i am handler for post_Check

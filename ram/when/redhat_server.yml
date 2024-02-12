@@ -1,0 +1,13 @@
+---
+- name: This Example demonstrates the usage of When condition using ansible_facts
+  hosts: all
+  tasks:
+    - name: Detect ubuntu server
+      debug:
+        msg: This is an ubuntu server
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Detect server OS
+      debug:
+        msg: This is an {{ ansible_distribution }} server
+      when: ansible_distribution == "Amazon"
