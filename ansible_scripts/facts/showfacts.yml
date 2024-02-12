@@ -1,0 +1,15 @@
+---
+- name: This example demonstrates the usage of ansible facts
+  hosts: all
+  tasks:
+    - name: Display the default IPV4 address
+      debug:
+        msg: IPV4 address is {{ ansible_facts.default_ipv4.address }}
+
+    - name: Display Fqdn
+      debug: 
+        msg: The fqdn is {{ ansible_facts.fqdn }}
+
+    - name: Display distribution
+      debug:
+        msg: The distribution is {{ ansible_facts.distribution }}

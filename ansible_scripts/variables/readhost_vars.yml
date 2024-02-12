@@ -1,0 +1,7 @@
+---
+- name: This playbook is used to read host variables
+  hosts: all
+  tasks:
+   - name: Read the variables from host variables
+     debug:
+       msg: "{{ message }}"

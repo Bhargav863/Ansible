@@ -1,0 +1,18 @@
+---
+- name: This examples shows the usage of dictionaries in loops
+  hosts: all
+  vars:
+   employee:
+     name: "Bhargavaram"
+     title: "DevOps Engineer"
+     company: "Accenture"
+  tasks: 
+    - name: Print below messaged
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ employee }}"
+      ignore_errors: yes
+
+    - name: read the output of this task if above task is failed.
+      debug:
+        msg: For sure we will get an error when you ran the this playbook. To overcome this error you need to use the filter dict2items. Refer to the playbook dict2items.yml

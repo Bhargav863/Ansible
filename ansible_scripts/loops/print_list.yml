@@ -1,0 +1,21 @@
+---
+- name: This example for looping over lists
+  hosts: all
+  vars:
+   prime: [2,3,5,7,9]
+  tasks:
+    - name: Print the first five prime numbers
+      command: echo "{{ num }}"
+      register: prime_number
+      loop: "{{ prime }}"
+      loop_control:
+        label: "{{ num }}"
+        loop_var: num
+
+    - name: show the registered output
+      debug:
+        msg: "{{ item.stdout }}"
+      loop: "{{ prime_number.results }}"
+      loop_control:
+         label: "{{ item.num }}"
+

@@ -1,0 +1,23 @@
+---
+- name: this example demonstrates how to use loops with when
+  hosts: all
+  vars:
+    users:
+      - name: ram 
+        role: software
+
+      - name: sumati
+        role: software
+
+      - name: vyshu
+        role: student
+
+  tasks:
+    - name: create the file for softwares
+      file:
+        dest: /tmp/{{ item.name }}.txt
+        mode: 0755
+        state: touch
+        owner: root
+      loop: "{{ users }}"
+      when: item.role == "software"

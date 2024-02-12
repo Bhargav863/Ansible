@@ -1,0 +1,19 @@
+---
+- name: This is the solution for lab4
+  hosts: all
+  tasks:
+   - name: check the free memory
+     command: free -h
+     register: free_mem
+
+   - name: Display the output 
+     debug:
+       var: free_mem
+
+   - name: Show the exact free memory
+     debug:
+       msg: "{{ free_mem.stdout_lines }}"
+
+   - name: Display IPV4 address of all managed nodes
+     debug:
+       msg: IPV4 address is {{ ansible_facts.default_ipv4.address }}

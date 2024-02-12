@@ -1,0 +1,8 @@
+---
+- name: Accessing vaults in playbook
+  hosts: localhost
+  vars_files: websecrets.yml
+  tasks:
+    - name: show the secret
+      debug:
+        msg: "{{ secret }}"

@@ -1,0 +1,52 @@
+---
+- name: Example playbook for tags
+  hosts: all
+  tags:
+    - software
+  tasks: 
+   - name: install httpd and firewalld
+     package:
+      name:
+       - httpd
+       - firewalld
+      state: present
+
+   - name: install welcome page
+     copy:
+       content: Hello world
+       dest: /var/www/html/index.html
+
+   - name: start firewalld services
+     service:
+        name: firewalld
+        enabled: true
+        state: started
+   - name: start httpd services
+     service:
+        name: httpd
+        enabled: true
+        state: started
+   - name: open firewalld
+     firewalld:
+         service: httpd
+         permanent: true
+         state: enabled
+         immediate: yes
+
+- name: test webserver access
+  hosts: ansiblenode2
+  become: no
+  tags:
+    - testwebserver
+  tasks: 
+     - name: connect to the webserver
+       uri: 
+        url: http://ansiblenode2
+        return_content: yes
+        status_code: 200
+       register: output
+
+     - name: show output 
+       debug:
+         var: output
+

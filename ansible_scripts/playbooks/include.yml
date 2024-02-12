@@ -1,0 +1,11 @@
+---
+- name: Example for include keyword
+  hosts: all
+  tasks:
+   - name: Install nmap
+     package:
+        name: nmap
+        state: present
+   - name: remove git and nmap
+     include: include1.yml
+

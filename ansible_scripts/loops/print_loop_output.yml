@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+
+  - name: Create STDOUT output (single)
+    command: 'echo "1"'
+    register: result
+
+  - name: Show full result (single)
+    debug:
+      var: result
+
+  - name: Show '.stdout' (single)
+    debug:
+      msg: "The result in '.stdout': {{ result.stdout }} is of type {{ result.stdout | type_debug }}"
+
+  - name: Create STDOUT output (loop)
+    command: 'echo "{{ item }}"'
+    register: result
+    loop: [1, 2, 3]
+    loop_control:
+      label: "{{ item }}"
+
+  - name: Show full result (loop)
+    debug:
+      var: result
+
+  - name: Show '.stdout' (loop)
+    debug:
+      msg: "The result in '.stdout': {{ item.stdout }} is of type {{ item.stdout | type_debug }}"
+    loop: "{{ result.results }}"
+    loop_control:
+      label: "{{ item.item }}"

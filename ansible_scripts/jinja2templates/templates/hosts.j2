@@ -1,0 +1,4 @@
+{# you can use the for statement in jinja2 to loop over the items in a list,range #}
+{% for host in groups['all'] %}
+{{ hostvars[host].ansible_facts.default_ipv4.address }}  {{ hostvars[host].ansible_facts.fqdn }} {{ hostvars[host].ansible_facts.hostname }}
+{% endfor %}

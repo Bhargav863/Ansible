@@ -1,0 +1,14 @@
+---
+- name: pause and confirm
+  hosts: all
+  vars:
+    ports: [22,80,443,8443,61616,8181]
+  tasks:
+    - name: Loop with ports
+      debug:
+        msg: Opening port for {{ item }}
+      loop: "{{ ports }}"
+
+    - name: pause and confirm
+      pause:
+        prompt: "continue to the next item?(yes/no)"

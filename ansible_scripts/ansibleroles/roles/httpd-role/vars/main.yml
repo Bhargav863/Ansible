@@ -1,0 +1,3 @@
+---
+# vars file for httpd-role
+webserver: Apache

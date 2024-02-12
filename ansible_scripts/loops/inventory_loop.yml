@@ -1,0 +1,16 @@
+---
+- name: Looping over inventories
+  hosts: localhost
+  tasks:
+    - name: To loop over all our inventory
+      command: ping -c 1 {{ item }}
+      ignore_errors: true
+      loop: "{{ groups['all'] }}"
+
+- name: second play for looping over inventories
+  hosts: dev
+  tasks:
+    - name: To loop over a group of server
+      command: ping -c 1 {{ item }}
+      ignore_errors: true
+      loop: "{ groups['qa'] }}"

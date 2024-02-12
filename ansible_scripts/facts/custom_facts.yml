@@ -1,0 +1,21 @@
+---
+- name: Create an directory and copying the facts file to all managed nodes from ansible node
+  hosts: all
+  gather_facts: false
+  tasks:
+     - name: create directory for facts
+       file:
+        path: /etc/ansible/facts.d
+        owner: ansible
+        state: directory
+        mode: 0755
+
+     - name: Copy the facts file to managed hosts
+       copy:
+        src: cool.sh
+        dest: /etc/ansible/facts.d
+
+     - name: Delete the file
+       file:
+        dest: /etc/ansible/facts.d
+        state: absent

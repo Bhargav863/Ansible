@@ -1,0 +1,24 @@
+---
+- name: You can also use ignore_errors to ensure that Ansible continue executing the tasks in the playbook even if a task has failed
+  hosts: localhost
+  tasks:
+    - name: handling errors
+      block:
+        - name: Run the uptime command
+          command: uptime
+          
+        - name: Run some wrong command
+          command: downtime
+
+        - name: This tasks will run 
+          debug:
+            msg: Errors are ingonored in the above task hence this task will run
+
+      rescue:
+        - name: It will run if any of task is failed in block
+          debug:
+            msg: Errors are ignored...hence rescue block won't run, rescue task will run only if any of the task failed and when errors are not handled
+      always:
+        - name: This will run always
+          debug:
+            msg: This task will run always even though a task failed in block

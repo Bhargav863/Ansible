@@ -1,0 +1,18 @@
+---
+- name: Looping over a range of numbers
+  hosts: localhost
+  tasks:
+    - name: Range loop with default stride
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ range(10) | list }}"
+
+    - name: Range loop between teo specified numbers
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ range(5,15) | list }}"
+
+    - name: Range loop with desired stride(By default stride is 1)
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ range(0,16,2) | list }}"

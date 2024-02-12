@@ -1,0 +1,8 @@
+---
+- name: Looping over inventories
+  hosts: dev
+  tasks:
+    - name: Display the host information and group information
+      debug:
+        msg: The Host is {{ inventory_hostname }}
+      loop: "{{ groups['qa'] }}"
