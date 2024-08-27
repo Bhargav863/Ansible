@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Declaring variables
+echo " usage of variables"
 
-name=Bhargav
-Designation="Associate software Engineer"
-Role="DevOps Engineer"
-Experience=2years
+file_name=first-script.sh
+config_files=$(ls -l /home/azureuser/shellscripting/practice_scripts)
 
-# Usage of the varibales
-
-echo " My name is $name working as $Designation in the role of $Role with an experience of $Experience" 
+echo " using the $file_name to configure the server"
+echo " List all files under the shell scripting directory :- $config_files"
